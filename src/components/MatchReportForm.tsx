@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Calendar, MapPin, Users, Plus, Trash2 } from 'lucide-react';
+import { translations } from '../translations';
 import type { MatchReport, MatchEvent } from '../types';
+
+
 
 interface Props {
   onSubmit: (report: MatchReport) => void;
+  language: 'en' | 'ar';
 }
 
-export default function MatchReportForm({ onSubmit }: Props) {
+export default function MatchReportForm({ onSubmit, language }: Props) {
+  const t = translations[language];
+
   const [report, setReport] = useState<MatchReport>({
     competition: '',
     date: format(new Date(), 'yyyy-MM-dd'),
@@ -30,6 +36,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
     description: '',
     type: 'goal'
   });
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +69,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
       <div className="bg-white rounded-lg shadow-md p-6 space-y-6">
         <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
           {/* <Whistle className="w-6 h-6" /> */}
-          Match Details
+          {t.matchDetails}
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -84,24 +91,24 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div> */}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Competition</label>
+            <label className="block text-sm font-medium text-gray-700">{t.competition}</label>
             <select
               value={report.competition} // Update this line
               onChange={e => setReport(prev => ({ ...prev, competition: e.target.value }))} // Update this line
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             >
-              <option value="Honor 2">Honor 2</option>
-              <option value="Honor 1">Honor 1</option>
-              <option value="Excellent">Excellent</option>
-              <option value="Honor Feminist 2">Honor Feminist 2</option>
-              <option value="Honor Feminist 1">Honor Feminist 1</option>
-              <option value="Honor Feminist Excellent">Honor Feminist Excellent</option>
+              <option value="Honor 2">{t.honor2}</option>
+              <option value="Honor 1">{t.honor1}</option>
+              <option value="Excellent">{t.excelent}</option>
+              <option value="Honor Feminist 2">{t.honorf2}</option>
+              <option value="Honor Feminist 1">{t.honorf2}</option>
+              <option value="Honor Feminist Excellent">{t.excelentf}</option>
             </select>
           </div>
 
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Date</label>
+            <label className="block text-sm font-medium text-gray-700">{t.date}</label>
             <div className="mt-1 relative">
               <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -115,7 +122,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Stadium</label>
+            <label className="block text-sm font-medium text-gray-700">{t.city}</label>
             <div className="mt-1 relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -129,7 +136,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">City</label>
+            <label className="block text-sm font-medium text-gray-700">{t.city}</label>
             <div className="mt-1 relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -143,7 +150,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Referee Name</label>
+            <label className="block text-sm font-medium text-gray-700">{t.referee}</label>
             <div className="mt-1 relative">
               <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -157,7 +164,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Referee Assistant 1 Name</label>
+            <label className="block text-sm font-medium text-gray-700">{t.referee1}</label>
             <div className="mt-1 relative">
               <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -172,7 +179,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
 
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Referee Assistant 2 Name</label>
+            <label className="block text-sm font-medium text-gray-700">{t.referee2}</label>
             <div className="mt-1 relative">
               <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -187,7 +194,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
 
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Delegate Name</label>
+            <label className="block text-sm font-medium text-gray-700">{t.delegate}</label>
             <div className="mt-1 relative">
               <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -203,7 +210,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Home Team</label>
+            <label className="block text-sm font-medium text-gray-700">{t.homeTeam}</label>
             <input
               type="text"
               value={report.homeTeam}
@@ -214,7 +221,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Away Team</label>
+            <label className="block text-sm font-medium text-gray-700">{t.awayTeam}</label>
             <input
               type="text"
               value={report.awayTeam}
@@ -225,7 +232,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Home Score</label>
+            <label className="block text-sm font-medium text-gray-700">{t.homeScore}</label>
             <input
               type="number"
               min="0"
@@ -237,7 +244,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Away Score</label>
+            <label className="block text-sm font-medium text-gray-700">{t.awayScore}</label>
             <input
               type="number"
               min="0"
@@ -252,23 +259,23 @@ export default function MatchReportForm({ onSubmit }: Props) {
 
 
       <div className="bg-white rounded-lg shadow-md p-6 space-y-6">
-        <h2 className="text-2xl font-bold text-gray-800">Match Events</h2>
+        <h2 className="text-2xl font-bold text-gray-800">{t.matchEvents}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Team</label>
+            <label className="block text-sm font-medium text-gray-700">{t.team}</label>
               <select
                 value={newEvent.team}
                 onChange={e => setNewEvent(prev => ({ ...prev, team: e.target.value  }))}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               >
-                <option value="Away Team">Away Team</option>
-                <option value="Home Team">Home Team</option>
+                <option value="Away Team">{t.awayTeam}</option>
+                <option value="Home Team">{t.homeTeam}</option>
               </select>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Player Number</label>
+            <label className="block text-sm font-medium text-gray-700">{t.PlayerNumber}</label>
             <input
               type="text"
               placeholder="e.g. 05"
@@ -279,7 +286,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Player Name</label>
+            <label className="block text-sm font-medium text-gray-700">{t.PlayerName}</label>
             <input
               type="text"
               placeholder="e.g. Yahya Jabrane"
@@ -290,7 +297,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Player Licence Number</label>
+            <label className="block text-sm font-medium text-gray-700">{t.playerlicencenumber}</label>
             <input
               type="text"
               placeholder="e.g. L0000001M99"
@@ -301,7 +308,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Time</label>
+            <label className="block text-sm font-medium text-gray-700">{t.time}</label>
             <input
               type="text"
               placeholder="e.g. 23'"
@@ -312,15 +319,15 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Type</label>
+            <label className="block text-sm font-medium text-gray-700">{t.type}</label>
             <select
               value={newEvent.type}
               onChange={e => setNewEvent(prev => ({ ...prev, type: e.target.value as MatchEvent['type'] }))}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             >
-              <option value="goal">Goal</option>
-              <option value="yellow-card">Yellow Card</option>
-              <option value="red-card">Red Card</option>
+              <option value="goal">{t.goal}</option>
+              <option value="yellow-card">{t.yellowcard}</option>
+              <option value="red-card">{t.redcard}</option>
               {/* <option value="substitution">Substitution</option>
               <option value="injury">Injury</option>
               <option value="other">Other</option> */}
@@ -328,7 +335,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Description</label>
+            <label className="block text-sm font-medium text-gray-700">{t.description}</label>
             <div className="mt-1 flex gap-2">
               <input
                 type="text"
@@ -378,13 +385,13 @@ export default function MatchReportForm({ onSubmit }: Props) {
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Additional Notes</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.additionalNotes}</h2>
         <textarea
           value={report.additionalNotes}
           onChange={e => setReport(prev => ({ ...prev, additionalNotes: e.target.value }))}
           rows={4}
           className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          placeholder="Any additional comments or observations..."
+          placeholder={language === 'en' ? 'Any additional comments or observations...' : 'أي تعليقات أو ملاحظات إضافية...'}
         />
       </div>
 
@@ -393,7 +400,7 @@ export default function MatchReportForm({ onSubmit }: Props) {
           type="submit"
           className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Generate Report
+          {t.generateReport}
         </button>
       </div>
     </form>
