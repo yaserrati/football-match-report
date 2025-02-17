@@ -19,7 +19,7 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
     date: format(new Date(), 'yyyy-MM-dd'),
     stadium: '',
     city : '',
-    time : '',
+    // time : '',
     homeTeam: '',
     awayTeam: '',
     homeScore: 0,
@@ -98,6 +98,7 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
               onChange={e => setReport(prev => ({ ...prev, competition: e.target.value }))} // Update this line
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             >
+              <option value="select"></option>
               <option value="Honor 2">{t.honor2}</option>
               <option value="Honor 1">{t.honor1}</option>
               <option value="Excellent">{t.excelent}</option>
@@ -270,6 +271,7 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
                 onChange={e => setNewEvent(prev => ({ ...prev, team: e.target.value  }))}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               >
+                <option value="select"></option>
                 <option value="Away Team">{t.awayTeam}</option>
                 <option value="Home Team">{t.homeTeam}</option>
               </select>
@@ -326,6 +328,7 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
               onChange={e => setNewEvent(prev => ({ ...prev, type: e.target.value as MatchEvent['type'] }))}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             >
+              <option value="select"></option>
               <option value="goal">{t.goal}</option>
               <option value="yellow-card">{t.yellowcard}</option>
               <option value="red-card">{t.redcard}</option>

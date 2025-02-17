@@ -282,9 +282,14 @@ export default function MatchReportPDF({ report }: Props) {
             <Text style={styles.label}>City:</Text>
             <Text style={styles.value}>{report.city}</Text>
           </View>
+
           <View style={styles.row}>
             <Text style={styles.label}>Date:</Text>
             <Text style={styles.value}>{format(new Date(report.date), 'MMMM do, yyyy')}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Time:</Text>
+            <Text style={styles.value}>{format(new Date(report.date), 'HH:mm')}</Text>
           </View>
         </View>
 
