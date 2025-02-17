@@ -1,6 +1,7 @@
 import { Page, Text, View, Document, StyleSheet, Font, Image } from '@react-pdf/renderer';
 import { format } from 'date-fns';
 import type { MatchReport } from '../types';
+import logo from '/src/assets/lsfma-logo.png';
 
 // Register fonts for better typography
 Font.register({
@@ -264,7 +265,7 @@ export default function MatchReportPDF({ report }: Props) {
         <View style={styles.headerContainer}>
           <Image
             style={styles.logo}
-            src="../src/assets/lsfma-logo.png"
+            src={logo}
           />
           <Text style={styles.federationText}>FEDERATION ROYALE MAROCAINE DE FOOTBALL</Text>
           <Text style={styles.ligueText}>LIGUE REGIONALE MARRAKECH-SAFI</Text>
