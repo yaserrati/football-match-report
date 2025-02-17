@@ -264,7 +264,7 @@ export default function MatchReportPDF({ report }: Props) {
         <View style={styles.headerContainer}>
           <Image
             style={styles.logo}
-            src="/src/logo.png"
+            src="../src/assets/lsfma-logo.png"
           />
           <Text style={styles.federationText}>FEDERATION ROYALE MAROCAINE DE FOOTBALL</Text>
           <Text style={styles.ligueText}>LIGUE REGIONALE MARRAKECH-SAFI</Text>

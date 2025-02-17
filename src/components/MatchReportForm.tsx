@@ -124,7 +124,7 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">{t.city}</label>
+            <label className="block text-sm font-medium text-gray-700">{t.stadium}</label>
             <div className="mt-1 relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
