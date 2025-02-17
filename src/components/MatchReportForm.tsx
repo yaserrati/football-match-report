@@ -19,6 +19,7 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
     date: format(new Date(), 'yyyy-MM-dd'),
     stadium: '',
     city : '',
+    time : '',
     homeTeam: '',
     awayTeam: '',
     homeScore: 0,
@@ -357,6 +358,10 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
         <div className="mt-4">
           {report.events.map((event, index) => (
             <div key={index} className="flex items-center gap-4 py-2 border-b">
+              <span className="flex-1">{event.team}</span>
+              <span className="flex-1">{event.PlayerNumber}</span>
+              <span className="flex-1">{event.PlayerName}</span>
+              <span className="flex-1">{event.PlayerLicenceNumber}</span>
               <span className="font-medium w-16">{event.time}</span>
               <span className="px-2 py-1 rounded text-sm font-medium" style={{
                 backgroundColor: {
