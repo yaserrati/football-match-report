@@ -310,6 +310,10 @@ export default function MatchReportPDF({ report }: Props) {
             <Text style={styles.value}>{report.refereea2}</Text>
           </View>
           <View style={styles.row}>
+            <Text style={styles.label}>Referee 4:</Text>
+            <Text style={styles.value}>{report.referee4}</Text>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.label}>Delegate:</Text>
             <Text style={styles.value}>{report.delegate}</Text>
           </View>

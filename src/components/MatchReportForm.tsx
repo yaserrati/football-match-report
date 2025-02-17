@@ -166,6 +166,20 @@ export default function MatchReportForm({ onSubmit, language }: Props) {
           </div>
 
           <div>
+            <label className="block text-sm font-medium text-gray-700">{t.referee4}</label>
+            <div className="mt-1 relative">
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                value={report.referee4}
+                onChange={e => setReport(prev => ({ ...prev, referee4: e.target.value }))}
+                className="block w-full pl-10 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
             <label className="block text-sm font-medium text-gray-700">{t.referee1}</label>
             <div className="mt-1 relative">
               <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />

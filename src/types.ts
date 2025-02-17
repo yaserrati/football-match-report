@@ -23,6 +23,7 @@ export interface MatchReport {
   homeScore: number;
   awayScore: number;
   referee: string;
+  referee4: string;
   refereea1: string ;
   refereea2: string ;
   delegate: string ;
